@@ -6,7 +6,7 @@ import java.io.Serializable;
 import java.util.Objects;
 
 @Entity
-@Table(name = "tb_user_phone")
+@Table(name = "tb_phone")
 public class Phone implements Serializable {
     @Serial
     private static final long serialVersionUID = 1L;

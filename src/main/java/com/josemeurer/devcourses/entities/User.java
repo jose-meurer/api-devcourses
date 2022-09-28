@@ -3,10 +3,9 @@ package com.josemeurer.devcourses.entities;
 import javax.persistence.*;
 import java.io.Serial;
 import java.io.Serializable;
+import java.time.Instant;
 import java.time.LocalDate;
-import java.util.HashSet;
-import java.util.Objects;
-import java.util.Set;
+import java.util.*;
 
 @Entity
 @Table(name = "tb_user")
@@ -30,10 +29,13 @@ public class User implements Serializable {
     private LocalDate birthDate;
 
     @Column(columnDefinition = "TIMESTAMP WITHOUT TIME ZONE")
-    private LocalDate registrationDate;
+    private Instant registrationDate;
 
     @OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
     private Set<Phone> phones = new HashSet<>();
+
+    @OneToMany(mappedBy = "user")
+    private List<Notification> notifications = new ArrayList<>();
 
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "tb_user_role",
@@ -45,14 +47,13 @@ public class User implements Serializable {
     public User() {
     }
 
-    public User(Long id, String cpf, String name, String email, String password, LocalDate birthDate, LocalDate registrationDate) {
+    public User(Long id, String cpf, String name, String email, String password, LocalDate birthDate) {
         this.id = id;
         this.cpf = cpf;
         this.name = name;
         this.email = email;
         this.password = password;
         this.birthDate = birthDate;
-        this.registrationDate = registrationDate;
     }
 
     public Long getId() {
@@ -103,16 +104,21 @@ public class User implements Serializable {
         this.birthDate = birthDate;
     }
 
-    public LocalDate getRegistrationDate() {
+    public Instant getRegistrationDate() {
         return registrationDate;
     }
 
-    public void setRegistrationDate(LocalDate registrationDate) {
-        this.registrationDate = registrationDate;
+    @PrePersist
+    public void prePersist() {
+        registrationDate = Instant.now();
     }
 
     public Set<Phone> getPhones() {
         return phones;
+    }
+
+    public List<Notification> getNotifications() {
+        return notifications;
     }
 
     public Set<Role> getRoles() {

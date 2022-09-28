@@ -3,7 +3,7 @@ package com.josemeurer.devcourses.entities;
 import javax.persistence.*;
 import java.io.Serial;
 import java.io.Serializable;
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
@@ -27,15 +27,15 @@ public class User implements Serializable {
     private String password;
 
     @Column(columnDefinition = "TIMESTAMP WITHOUT TIME ZONE")
-    private Date birthDate;
+    private LocalDate birthDate;
 
     @Column(columnDefinition = "TIMESTAMP WITHOUT TIME ZONE")
-    private Date registrationDate;
+    private LocalDate registrationDate;
 
-    @OneToMany(mappedBy = "user")
+    @OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
     private Set<Phone> phones = new HashSet<>();
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "tb_user_role",
             joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "role_id")
@@ -45,7 +45,7 @@ public class User implements Serializable {
     public User() {
     }
 
-    public User(Long id, String cpf, String name, String email, String password, Date birthDate, Date registrationDate) {
+    public User(Long id, String cpf, String name, String email, String password, LocalDate birthDate, LocalDate registrationDate) {
         this.id = id;
         this.cpf = cpf;
         this.name = name;
@@ -95,19 +95,19 @@ public class User implements Serializable {
         this.password = password;
     }
 
-    public Date getBirthDate() {
+    public LocalDate getBirthDate() {
         return birthDate;
     }
 
-    public void setBirthDate(Date birthDate) {
+    public void setBirthDate(LocalDate birthDate) {
         this.birthDate = birthDate;
     }
 
-    public Date getRegistrationDate() {
+    public LocalDate getRegistrationDate() {
         return registrationDate;
     }
 
-    public void setRegistrationDate(Date registrationDate) {
+    public void setRegistrationDate(LocalDate registrationDate) {
         this.registrationDate = registrationDate;
     }
 

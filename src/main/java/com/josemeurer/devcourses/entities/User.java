@@ -17,8 +17,6 @@ public class User implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(unique = true)
-    private String cpf;
     private String name;
 
     @Column(unique = true)
@@ -37,6 +35,9 @@ public class User implements Serializable {
     @OneToMany(mappedBy = "user")
     private List<Notification> notifications = new ArrayList<>();
 
+    @OneToMany(mappedBy = "instructor")
+    private List<Course> courses;
+
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "tb_user_role",
             joinColumns = @JoinColumn(name = "user_id"),
@@ -47,9 +48,8 @@ public class User implements Serializable {
     public User() {
     }
 
-    public User(Long id, String cpf, String name, String email, String password, LocalDate birthDate) {
+    public User(Long id, String name, String email, String password, LocalDate birthDate) {
         this.id = id;
-        this.cpf = cpf;
         this.name = name;
         this.email = email;
         this.password = password;
@@ -62,14 +62,6 @@ public class User implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public String getCpf() {
-        return cpf;
-    }
-
-    public void setCpf(String cpf) {
-        this.cpf = cpf;
     }
 
     public String getName() {
@@ -123,6 +115,10 @@ public class User implements Serializable {
 
     public Set<Role> getRoles() {
         return roles;
+    }
+
+    public List<Course> getCourses() {
+        return courses;
     }
 
     @Override

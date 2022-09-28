@@ -1,7 +1,7 @@
 --Users
-INSERT INTO tb_user (cpf, name, email, birth_date, password) VALUES ('12345678910', 'Alex Brown', 'alex@gmail.com', TIMESTAMP WITH TIME ZONE '1990-12-12T03:00:00Z', '$2a$10$eACCYoNOHEqXve8aIWT8Nu3PkMXWBaOxJ9aORUYzfMQCbVBIhZ8tG');
-INSERT INTO tb_user (cpf, name, email, birth_date, password) VALUES ('12345678911', 'Maria Green', 'maria@gmail.com', TIMESTAMP WITH TIME ZONE '1993-07-14T03:00:00Z', '$2a$10$eACCYoNOHEqXve8aIWT8Nu3PkMXWBaOxJ9aORUYzfMQCbVBIhZ8tG');
-INSERT INTO tb_user (cpf, name, email, birth_date, password) VALUES ('12345678912', 'Bob Brown', 'bob@gmail.com', TIMESTAMP WITH TIME ZONE '1985-02-09T03:00:00Z', '$2a$10$eACCYoNOHEqXve8aIWT8Nu3PkMXWBaOxJ9aORUYzfMQCbVBIhZ8tG');
+INSERT INTO tb_user (name, email, birth_date, password) VALUES ('Alex Brown', 'alex@gmail.com', TIMESTAMP WITH TIME ZONE '1990-12-12T03:00:00Z', '$2a$10$eACCYoNOHEqXve8aIWT8Nu3PkMXWBaOxJ9aORUYzfMQCbVBIhZ8tG');
+INSERT INTO tb_user (name, email, birth_date, password) VALUES ('Maria Green', 'maria@gmail.com', TIMESTAMP WITH TIME ZONE '1993-07-14T03:00:00Z', '$2a$10$eACCYoNOHEqXve8aIWT8Nu3PkMXWBaOxJ9aORUYzfMQCbVBIhZ8tG');
+INSERT INTO tb_user (name, email, birth_date, password) VALUES ('Bob Brown', 'bob@gmail.com', TIMESTAMP WITH TIME ZONE '1985-02-09T03:00:00Z', '$2a$10$eACCYoNOHEqXve8aIWT8Nu3PkMXWBaOxJ9aORUYzfMQCbVBIhZ8tG');
 --Phones
 INSERT INTO tb_phone (user_id, name, phone) VALUES (1, '11999123456', 'cellphone');
 INSERT INTO tb_phone (user_id, name, phone) VALUES (1, '1177123456', 'homephone');

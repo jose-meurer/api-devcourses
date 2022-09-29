@@ -21,7 +21,7 @@ public class Section implements Serializable {
     @Column(columnDefinition = "TEXT")
     private String description;
     private Integer position;
-    private String imgURI;
+    private String imgUri;
 
     @ManyToOne
     @JoinColumn(name = "resource_id")
@@ -33,12 +33,12 @@ public class Section implements Serializable {
     public Section() {
     }
 
-    public Section(Long id, String title, String description, Integer position, String imgURI, Resource resource) {
+    public Section(Long id, String title, String description, Integer position, String imgUri, Resource resource) {
         this.id = id;
         this.title = title;
         this.description = description;
         this.position = position;
-        this.imgURI = imgURI;
+        this.imgUri = imgUri;
         this.resource = resource;
     }
 
@@ -74,12 +74,12 @@ public class Section implements Serializable {
         this.position = position;
     }
 
-    public String getImgURI() {
-        return imgURI;
+    public String getImgUri() {
+        return imgUri;
     }
 
-    public void setImgURI(String imgURI) {
-        this.imgURI = imgURI;
+    public void setImgUri(String imgUri) {
+        this.imgUri = imgUri;
     }
 
     public Resource getResource() {

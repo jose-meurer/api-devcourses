@@ -22,6 +22,7 @@ public class Resource implements Serializable {
 
     @Column(columnDefinition = "TEXT")
     private String description;
+    private Integer position;
     private String imgUri;
     private ResourceType type;
     private String externalLink;
@@ -36,10 +37,11 @@ public class Resource implements Serializable {
     public Resource() {
     }
 
-    public Resource(Long id, String title, String description, String imgUri, ResourceType type, String externalLink, Offer offer) {
+    public Resource(Long id, String title, String description, Integer position, String imgUri, ResourceType type, String externalLink, Offer offer) {
         this.id = id;
         this.title = title;
         this.description = description;
+        this.position = position;
         this.imgUri = imgUri;
         this.type = type;
         this.externalLink = externalLink;
@@ -68,6 +70,14 @@ public class Resource implements Serializable {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public Integer getPosition() {
+        return position;
+    }
+
+    public void setPosition(Integer position) {
+        this.position = position;
     }
 
     public String getImgUri() {

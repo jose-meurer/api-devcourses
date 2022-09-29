@@ -23,6 +23,9 @@ public class Enrollment implements Serializable {
     private Instant enrollMoment;
     private boolean available;
 
+    @OneToMany(mappedBy = "enrollment")
+    private Set<Deliver> delivers = new HashSet<>();
+
     @ManyToMany
     @JoinTable(name = "tb_lessons_done",
             joinColumns = {
@@ -91,6 +94,10 @@ public class Enrollment implements Serializable {
 
     public Set<Lesson> getLessonsDone() {
         return lessonsDone;
+    }
+
+    public Set<Deliver> getDelivers() {
+        return delivers;
     }
 
     @Override

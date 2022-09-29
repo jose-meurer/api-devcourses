@@ -75,16 +75,18 @@ public class UserReview implements Serializable {
         return created;
     }
 
-    public void setCreated(Instant created) {
-        this.created = created;
+    @PrePersist
+    public void prePersist() {
+        created = Instant.now();
     }
 
     public Instant getModified() {
         return modified;
     }
 
-    public void setModified(Instant modified) {
-        this.modified = modified;
+    @PostPersist
+    public void postPersist() {
+        modified = Instant.now();
     }
 
     public User getUser() {

@@ -3,7 +3,9 @@ package com.josemeurer.devcourses.entities;
 import javax.persistence.*;
 import java.io.Serial;
 import java.io.Serializable;
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 @Entity
 @Table(name = "tb_section")
@@ -24,6 +26,9 @@ public class Section implements Serializable {
     @ManyToOne
     @JoinColumn(name = "resource_id")
     private Resource resource;
+
+    @OneToMany(mappedBy = "section")
+    private Set<Lesson> lessons = new HashSet<>();
 
     public Section() {
     }
@@ -83,6 +88,10 @@ public class Section implements Serializable {
 
     public void setResource(Resource resource) {
         this.resource = resource;
+    }
+
+    public Set<Lesson> getLessons() {
+        return lessons;
     }
 
     @Override

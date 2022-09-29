@@ -27,8 +27,8 @@ public class UserReview implements Serializable {
     private Instant modified;
 
     @ManyToOne
-    @JoinColumn(name = "user_id")
-    private User user;
+    @JoinColumn(name = "author_id")
+    private User author;
 
     @ManyToOne
     @JoinColumn(name = "offer_id")
@@ -37,13 +37,13 @@ public class UserReview implements Serializable {
     public UserReview() {
     }
 
-    public UserReview(Long id, Integer rating, String content, Instant created, Instant modified, User user, Offer offer) {
+    public UserReview(Long id, Integer rating, String content, Instant created, Instant modified, User author, Offer offer) {
         this.id = id;
         this.rating = rating;
         this.content = content;
         this.created = created;
         this.modified = modified;
-        this.user = user;
+        this.author = author;
         this.offer = offer;
     }
 
@@ -89,12 +89,12 @@ public class UserReview implements Serializable {
         modified = Instant.now();
     }
 
-    public User getUser() {
-        return user;
+    public User getAuthor() {
+        return author;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setAuthor(User author) {
+        this.author = author;
     }
 
     public Offer getOffer() {

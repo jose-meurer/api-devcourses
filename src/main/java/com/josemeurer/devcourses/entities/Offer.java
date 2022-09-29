@@ -29,6 +29,9 @@ public class Offer implements Serializable {
     @OneToMany(mappedBy = "offer", fetch = FetchType.LAZY)
     private Set<UserReview> userReviews = new HashSet<>();
 
+    @OneToMany(mappedBy = "offer", fetch = FetchType.EAGER)
+    private Set<Resource> resources = new HashSet<>();
+
     public Offer() {
     }
 
@@ -70,6 +73,14 @@ public class Offer implements Serializable {
 
     public void setCourse(Course course) {
         this.course = course;
+    }
+
+    public Set<UserReview> getUserReviews() {
+        return userReviews;
+    }
+
+    public Set<Resource> getResources() {
+        return resources;
     }
 
     @Override

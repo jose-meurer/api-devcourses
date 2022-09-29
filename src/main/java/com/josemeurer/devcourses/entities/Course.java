@@ -3,7 +3,9 @@ package com.josemeurer.devcourses.entities;
 import javax.persistence.*;
 import java.io.Serial;
 import java.io.Serializable;
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 @Entity
 @Table(name = "tb_course")
@@ -16,6 +18,9 @@ public class Course implements Serializable {
     private Long id;
     private String name;
     private String imgUri;
+
+    @OneToMany(mappedBy = "course")
+    private Set<Offer> offers = new HashSet<>();
 
     public Course() {
     }
@@ -48,6 +53,10 @@ public class Course implements Serializable {
 
     public void setImgUri(String imgUri) {
         this.imgUri = imgUri;
+    }
+
+    public Set<Offer> getOffers() {
+        return offers;
     }
 
     @Override

@@ -13,8 +13,12 @@ public class Resource implements Serializable {
     @Serial
     private static final long serialVersionUID = 1L;
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String title;
+
+    @Column(columnDefinition = "TEXT")
     private String description;
     private String imgUri;
     private ResourceType type;

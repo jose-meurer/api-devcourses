@@ -17,18 +17,13 @@ public class Course implements Serializable {
     private String name;
     private String imgUri;
 
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "instructor_id")
-    private User instructor;
-
     public Course() {
     }
 
-    public Course(Long id, String name, String imgUri, User instructor) {
+    public Course(Long id, String name, String imgUri) {
         this.id = id;
         this.name = name;
         this.imgUri = imgUri;
-        this.instructor = instructor;
     }
 
     public Long getId() {
@@ -53,14 +48,6 @@ public class Course implements Serializable {
 
     public void setImgUri(String imgUri) {
         this.imgUri = imgUri;
-    }
-
-    public User getInstructor() {
-        return instructor;
-    }
-
-    public void setInstructor(User instructor) {
-        this.instructor = instructor;
     }
 
     @Override

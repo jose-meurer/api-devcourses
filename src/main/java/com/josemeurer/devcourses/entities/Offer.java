@@ -4,7 +4,9 @@ import javax.persistence.*;
 import java.io.Serial;
 import java.io.Serializable;
 import java.time.Instant;
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 @Entity
 @Table(name = "tb_offer")
@@ -23,6 +25,9 @@ public class Offer implements Serializable {
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "course_id")
     private Course course;
+
+    @OneToMany(mappedBy = "offer", fetch = FetchType.LAZY)
+    private Set<UserReview> userReviews = new HashSet<>();
 
     public Offer() {
     }

@@ -35,9 +35,6 @@ public class User implements Serializable {
     @OneToMany(mappedBy = "user")
     private List<Notification> notifications = new ArrayList<>();
 
-    @OneToMany(mappedBy = "instructor")
-    private List<Course> courses;
-
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "tb_user_role",
             joinColumns = @JoinColumn(name = "user_id"),
@@ -115,10 +112,6 @@ public class User implements Serializable {
 
     public Set<Role> getRoles() {
         return roles;
-    }
-
-    public List<Course> getCourses() {
-        return courses;
     }
 
     @Override

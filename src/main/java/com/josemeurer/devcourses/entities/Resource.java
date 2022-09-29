@@ -5,7 +5,9 @@ import com.josemeurer.devcourses.entities.enums.ResourceType;
 import javax.persistence.*;
 import java.io.Serial;
 import java.io.Serializable;
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 @Entity
 @Table(name = "tb_resource")
@@ -27,6 +29,9 @@ public class Resource implements Serializable {
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "offer_id")
     private Offer offer;
+
+    @OneToMany(mappedBy = "resource")
+    private Set<Section> sections = new HashSet<>();
 
     public Resource() {
     }
@@ -95,6 +100,10 @@ public class Resource implements Serializable {
 
     public void setOffer(Offer offer) {
         this.offer = offer;
+    }
+
+    public Set<Section> getSections() {
+        return sections;
     }
 
     @Override

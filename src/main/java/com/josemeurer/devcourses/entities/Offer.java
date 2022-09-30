@@ -29,7 +29,7 @@ public class Offer implements Serializable {
     @OneToMany(mappedBy = "offer", fetch = FetchType.LAZY)
     private Set<UserReview> userReviews = new HashSet<>();
 
-    @OneToMany(mappedBy = "offer", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "offer", fetch = FetchType.LAZY)
     private Set<Resource> resources = new HashSet<>();
 
     public Offer() {
